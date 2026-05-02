@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ventas Kevin</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="home">
+    <h1>Ventas Kevin</h1>
+
+    <div class="lista">
+        <a class="btn-secundario" th:href="@{/usuario}">Usuarios</a>
+        <a class="btn-secundario" th:href="@{/cliente}">Clientes</a>
+        <a class="btn-secundario" th:href="@{/producto}">Productos</a>
+        <a class="btn-secundario" th:href="@{/venta}">Ventas</a>
+        <a class="btn-secundario" th:href="@{/detalle}">Detalles de la Venta</a>
+
+        <form th:action="@{/logout}" method="post">
+            <button class="btn-cancelar" type="submit">Cerrar Sesión</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

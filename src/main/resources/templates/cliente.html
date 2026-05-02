@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Clientes</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Clientes</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>DPI</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Dirección</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cliente : ${clientes}">
+            <td th:text="${cliente.dpiCliente}"></td>
+            <td th:text="${cliente.nombreCliente}"></td>
+            <td th:text="${cliente.apellidoCliente}"></td>
+            <td th:text="${cliente.direccion}"></td>
+            <td th:text="${cliente.estado} ? 'Activo' : 'Inactivo'"></td>
+            <td>
+                <a class="btn-secundario" th:href="@{/cliente/editar/{dpi}(dpi=${cliente.dpiCliente})}">Editar</a>
+                <a class="btn-cancelar" th:href="@{/cliente/eliminar/{dpi}(dpi=${cliente.dpiCliente})}">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="acciones">
+        <a class="btn" th:href="@{/cliente/nuevo}">Nuevo</a>
+        <a class="btn-secundario" th:href="@{/home}">Volver</a>
+    </div>
+</div>
+</body>
+</html>

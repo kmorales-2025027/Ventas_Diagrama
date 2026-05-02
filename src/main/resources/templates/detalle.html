@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de Venta</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Detalles de la Venta</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario (Q)</th>
+            <th>Subtotal (Q)</th>
+            <th>ID de Producto</th>
+            <th>ID de Venta</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="detalle : ${detalles}">
+            <td th:text="${detalle.codigoDetalleVenta}"></td>
+            <td th:text="${detalle.cantidad}"></td>
+            <td th:text="${detalle.precioUnitario}"></td>
+            <td th:text="${detalle.subtotal}"></td>
+            <td th:text="${detalle.productosCodigoProducto}"></td>
+            <td th:text="${detalle.ventasCodigoVenta}"></td>
+            <td>
+                <a class="btn-secundario" th:href="@{/detalle/editar/{id}(id=${detalle.codigoDetalleVenta})}">Editar</a>
+                <a class="btn-cancelar" th:href="@{/detalle/eliminar/{id}(id=${detalle.codigoDetalleVenta})}">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="acciones">
+        <a class="btn" th:href="@{/detalle/nuevo}">Nuevo</a>
+        <a class="btn-secundario" th:href="@{/home}">Volver</a>
+    </div>
+</div>
+</body>
+</html>

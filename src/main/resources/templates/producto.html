@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Productos</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio (Q)</th>
+            <th>Stock</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="producto : ${productos}">
+            <td th:text="${producto.codigoProducto}"></td>
+            <td th:text="${producto.nombreProducto}"></td>
+            <td th:text="${producto.precio}"></td>
+            <td th:text="${producto.stock}"></td>
+            <td th:text="${producto.estado} ? 'Activo' : 'Inactivo'"></td>
+            <td>
+                <a class="btn-secundario" th:href="@{/producto/editar/{id}(id=${producto.codigoProducto})}">Editar</a>
+                <a class="btn-cancelar" th:href="@{/producto/eliminar/{id}(id=${producto.codigoProducto})}">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="acciones">
+        <a class="btn" th:href="@{/producto/nuevo}">Nuevo</a>
+        <a class="btn-secundario" th:href="@{/home}">Volver</a>
+    </div>
+</div>
+</body>
+</html>
